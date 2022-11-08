@@ -12,6 +12,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String name="";
+  String pswd="";
   bool changeButton=false;
   final _formKey=GlobalKey<FormState>();
 
@@ -84,7 +85,13 @@ class _LoginPageState extends State<LoginPage> {
                       return "Password length should be at least 4";
                     }
                     return null;
-                  }
+                  },
+                  onChanged: (value){
+                    pswd=value;
+                    setState(() {
+                      
+                    });
+                  },
                 ),
                   ],
                   ),
