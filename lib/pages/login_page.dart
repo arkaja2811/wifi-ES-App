@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:wifies/utils/routes.dart';
+import 'package:wifies/utils/strings.dart';
+import 'package:wifies/utils/requests.dart';
+import 'dart:developer' as developer;
 
 class LoginPage extends StatefulWidget {
   
@@ -11,22 +14,28 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String name="";
-  String pswd="";
+  // String name="";
+  // String pswd="";
   bool changeButton=false;
+  String responseLogin="";
   final _formKey=GlobalKey<FormState>();
 
   moveToHome(BuildContext context) async{
+    
     if(_formKey.currentState!.validate()) {
     setState(() {
       changeButton=true;
     });
+    responseLogin= await RequestsToServer.login_request([Str.name, Str.pswd]);
+    print("hello");
     await Future.delayed(Duration(seconds: 1));
+    developer.log(responseLogin);
     await Navigator.pushNamed(context, MyRoutes.controlsRoute);
     setState(() {
       changeButton=false;
     });
     }
+    
   }
 
   @override
@@ -44,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 20,
               ),
-              Text("Welcome $name", 
+              Text("Welcome ${responseLogin}", 
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
@@ -55,8 +64,8 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     TextFormField(
                   decoration:InputDecoration(
-                    hintText: "Enter SSID",
-                    labelText: "SSID",
+                    hintText: "Enter Username",
+                    labelText: "Username",
                   ) ,
                   validator: (value){
                     if(value!.isEmpty){
@@ -65,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                     return null;
                   },
                   onChanged:(value){
-                    name=value;
+                    Str.name=value;
                     setState(() {
                       
                     });
@@ -87,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                     return null;
                   },
                   onChanged: (value){
-                    pswd=value;
+                    Str.pswd=value;
                     setState(() {
                       
                     });
@@ -102,7 +111,10 @@ class _LoginPageState extends State<LoginPage> {
               Material(
                 child: InkWell(
                   //splashColor: Colors.red,
-                  onTap: () =>moveToHome(context),
+                  onTap: () {
+
+                    moveToHome(context);
+                    },
                   child: AnimatedContainer(
                     
                     duration: Duration(seconds: 1),
@@ -110,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                     width:changeButton?50:150,
                     //color: Colors.deepPurple,
                     alignment: Alignment.center,
-                    child: changeButton?Icon(Icons.done, color: Colors.white):Text("Login",
+                    child: changeButton?Icon(Icons.done, color: Colors.white,):Text("Login",
                     style: TextStyle(
                       color: Color(0xFF022727),
                       fontSize: 18,
