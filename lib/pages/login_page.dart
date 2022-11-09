@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:wifies/utils/routes.dart';
 import 'package:wifies/utils/strings.dart';
-import 'package:wifies/utils/requests.dart';
-import 'dart:developer' as developer;
+//import 'package:wifies/utils/requests.dart';
+//import 'dart:developer' as developer;
 
 class LoginPage extends StatefulWidget {
   
@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 20,
               ),
-              Text("Welcome ${responseLogin}", 
+              Text("Welcome $responseLogin", 
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
