@@ -11,7 +11,7 @@ class RequestsToServer{
   static var client = http.Client();
   //Login request
 
-  static Future<String> login_request(List<String> arguments) async {
+  static Future<String> login_request() async {
     try {
       var response = await client.post(
           Uri.http('10.0.2.2:8000', '/login'),

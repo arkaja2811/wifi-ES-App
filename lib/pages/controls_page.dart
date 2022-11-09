@@ -19,6 +19,19 @@ class _ControlsState extends State<Controls> {
   //  String deviceName='';
   //  String wifiPswd='';
 
+  // ignore: non_constant_identifier_names
+  void display_data() async {
+    if(_formKey.currentState!.validate()) {
+    
+    //responseLogin= await RequestsToServer.login_request();
+    print("hello");
+    //await Future.delayed(Duration(seconds: 1));
+    //developer.log(responseLogin);
+    await Navigator.pushNamed(context, MyRoutes.displayRoute);
+    
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,7 +147,8 @@ class _ControlsState extends State<Controls> {
                 
               ElevatedButton(
                           
-                          onPressed: () {  },
+                          onPressed: () => display_data(),
+                           
                           child: Text('Scan', style: TextStyle(fontSize: 25.0, color: Colors.white, fontWeight: FontWeight.bold, ),),
                           style: ElevatedButton.styleFrom(
                        primary: Colors.cyan, //background color of button

@@ -26,10 +26,10 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       changeButton=true;
     });
-    responseLogin= await RequestsToServer.login_request([Str.name, Str.pswd]);
+    //responseLogin= await RequestsToServer.login_request();
     print("hello");
     await Future.delayed(Duration(seconds: 1));
-    developer.log(responseLogin);
+    //developer.log(responseLogin);
     await Navigator.pushNamed(context, MyRoutes.controlsRoute);
     setState(() {
       changeButton=false;
@@ -96,6 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                     return null;
                   },
                   onChanged: (value){
+                    print("hello");
                     Str.pswd=value;
                     setState(() {
                       
