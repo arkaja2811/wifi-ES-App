@@ -23,7 +23,7 @@ class _ControlsState extends State<Controls> {
       await RequestsToServer.add_device_request([]);
       await RequestsToServer.add_wifi_deets_request([]);
       Str.responseDisplay = await RequestsToServer.get_wifi_ect_for_app_request([]);
-      print(Str.responseDisplay[1]);
+      //print(Str.responseDisplay[1]);
       //await Future.delayed(Duration(seconds: 1));
       //developer.log(responseLogin);
 

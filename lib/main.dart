@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:wifies/pages/controls_page.dart';
+import 'package:wifies/pages/display.dart';
 import 'package:wifies/pages/splash_screen.dart';
 import 'pages/login_page.dart';
 import 'utils/routes.dart';
@@ -30,7 +31,9 @@ class MyApp extends StatelessWidget {
         MyRoutes.homeRoute: (context)=>Splash(),
         MyRoutes.loginRoute: (context)=>LoginPage(),
         MyRoutes.controlsRoute: (context)=>Controls(),
+        MyRoutes.displayRoute: (context)=>Display(),
       },
-    );
+      );
+      }
+    
   }
-}
